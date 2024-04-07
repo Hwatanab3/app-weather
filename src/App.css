@@ -211,8 +211,55 @@ header {
 }
 
 /* PARTE ERROR  */
+.error__container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #d4d4d498;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  color: #222;
+  padding: 5px;
+}
+
 .error {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+}
+
+@media (min-width: 700px) {
+
+  header {
+    max-width: 600px;
+  }
+
+  .clima__card {
+    max-width: 500px;
+  }
+
+  .app__search {
+    max-width: 600px;
+  }
+
+  .search {
+    max-width: 500px;
+  }
+
+  .select {
+    max-width: 500px;
+  }
+
+  .error__container {
+    max-width: 500px;
+  }
 }
