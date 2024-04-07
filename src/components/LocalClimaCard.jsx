@@ -60,6 +60,8 @@ const LocalClimaCard = () => {
         setName(isCel ? 'Change to °C' : 'Change to °F')
     }
 
+
+
     return (
         <div>
             {error ? (
@@ -68,12 +70,18 @@ const LocalClimaCard = () => {
                     <img className='error' src='/assets/error.webp' alt='error' />
                 </>
             ) : (
-                <>
-                    <h2>{climaActual?.name}</h2>
-                    <div>
+                <div className='clima__card'>
+                    <div className='card__title'>
+                        <h2>{climaActual?.name} <span className='title__country'> [{climaActual?.sys.country}]</span></h2>
+                        <img
+                            src={`https://flagcdn.com/16x12/${climaActual?.sys.country.toLowerCase()}.png`}
+                            width="16"
+                            height="12"
+                            alt="bandera pais"></img>
+                    </div>
+                    <div className='card__content'>
                         <figure>
-
-                            <img src={`https://openweathermap.org/img/wn/${climaActual?.weather[0].icon}@2x.png`} alt='' />
+                            <img className='content__icon' src={`https://openweathermap.org/img/wn/${climaActual?.weather[0].icon}@2x.png`} alt='' />
                         </figure>
                         <div>
                             <strong>"{climaActual?.weather[0].description}"</strong>
@@ -92,8 +100,8 @@ const LocalClimaCard = () => {
                                 temp?.fah + ' °F'
                         }
                     </h2>
-                    <button onClick={handleTemp}>{name}</button>
-                </>
+                    <button className='btn--temp' onClick={handleTemp}>{name}</button>
+                </div>
             )
 
             }

@@ -3,7 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,21 +13,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: system-ui;
+}
+
+ul {
+  list-style: none;
+  line-height: 1.3;
 }
 
 .loading {
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   overflow: hidden;
+  transition: all 0.8s ease-out;
 }
 
 .loading__gif {
-  width: 50vw;
-  height: 50vw;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   object-position: center;
   border: 1px solid white;
@@ -46,30 +57,160 @@ body {
   justify-content: center;
 }
 
-.app__card {
+header {
   width: 80vw;
-  height: 50vh;
+  height: 50px;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(141, 140, 140, 0.829);
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+
+.header__title {
+  font-size: 1.5rem;
+}
+
+/* PARTE DE LA TARJETA */
+.clima__card {
+  position: fixed;
+  top: 38.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(177, 176, 176, 0.664);
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.card__title {
+  width: 90%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+  font-size: 0.7rem;
+  text-align: center;
+  color: #222;
+}
+
+.title__country {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.card__content {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.content__icon {
+  width: 80px;
+  height: 80px;
+}
+
+.btn--temp {
+  width: 40%;
+  height: 25px;
+  border: 1px solid transparent;
+  background-color: #414141;
+  border-radius: 5px;
+  color: #fff;
+  padding: 2px;
+}
+
+/* PARTE BUSCADOR */
+
+.app__search {
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 220px;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: #22222298;
+  row-gap: 1.2rem;
+  background-color: #d4d4d498;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  color: #222;
+  padding: 10px;
 }
 
 .select__container {
-  width: 90vw;
-  height: 100px;
+  width: 80vw;
+  height: 120px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.search {
+  width: 70vw;
+  display: flex;
   justify-content: center;
   align-items: center;
-  row-gap: .5rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search__title {
+  font-size: 0.85rem;
+}
+
+.search__input {
+  width: 70%;
+  height: 25px;
+  background-color: #dbdbdb;
+  border: 1px solid transparent;
+  font-size: .8rem;
+  padding-left: 5px;
+}
+
+.btn--search {
+  width: 30%;
+  height: 25px;
+  border: 1px solid transparent;
+  background-color: #414141;
+  color: #fff;
 }
 
 .select {
-  width: 200px;
+  width: 70vw;
+  height: 25px;
+  background-color: #e9e9e9;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #686767;
 }
 
+.search__txt {
+  font-size: 0.65rem;
+  color: #383838;
+}
+
+/* PARTE ERROR  */
 .error {
   width: 200px;
   height: 200px;

@@ -22,6 +22,8 @@ function App() {
     return () => clearTimeout(timer);
   }, [])
 
+  console.log(clima);
+
   return (
     <>
       {
@@ -31,6 +33,9 @@ function App() {
           </div>
         ) : (
           <div className='app__container' style={bgSytle}>
+            <header>
+              <h1 className='header__title'>⛅ Weather APP ⛅</h1>
+            </header>
             {clima ?
               (
                 <div>
@@ -43,14 +48,15 @@ function App() {
                 <LocalClimaCard />
               )}
 
-            <div className='app__card'>
-              <h1>Weather App</h1>
-              <SelectCity
-                setClima={setClima}
-              />
+            <div className='app__search'>
+              <h2 className='search__title'>SEARCH COUNTRY</h2>
               <Buscador
                 setClima={setClima}
               />
+              <SelectCity
+                setClima={setClima}
+              />
+              <p className='search__txt'>If you can't find your city try to search</p>
             </div>
           </div>
 

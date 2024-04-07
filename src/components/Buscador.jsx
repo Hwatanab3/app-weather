@@ -16,14 +16,14 @@ const Buscador = ({ setClima }) => {
     };
 
     return (
-        <div>
-            <input
+        <div className='search'>
+            <input className='search__input'
                 type='text'
                 placeholder='Search City'
                 value={searchValue}
                 onChange={handleInputChange}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button className='btn--search' onClick={handleSearch}>Search</button>
         </div>
     );
 };
