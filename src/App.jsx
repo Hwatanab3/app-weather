@@ -27,7 +27,7 @@ function App() {
       {
         isLoading ? (
           <div className='loading'>
-            <img className='loading__gif' src='../public/assets/loading.gif' alt='loading...' />
+            <img className='loading__gif' src='../assets/loading.gif' alt='loading...' />
           </div>
         ) : (
           <div className='app__container' style={bgSytle}>

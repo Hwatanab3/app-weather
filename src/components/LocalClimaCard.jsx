@@ -65,7 +65,7 @@ const LocalClimaCard = () => {
             {error ? (
                 <>
                     <p>{error}</p>
-                    <img className='error' src='/public/assets/error.webp' alt='error' />
+                    <img className='error' src='/assets/error.webp' alt='error' />
                 </>
             ) : (
                 <>
