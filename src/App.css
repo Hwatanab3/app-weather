@@ -1,0 +1,77 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+body {
+  box-sizing: inherit;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.loading__gif {
+  width: 50vw;
+  height: 50vw;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.app__container {
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app__card {
+  width: 80vw;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #22222298;
+}
+
+.select__container {
+  width: 90vw;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: .5rem;
+}
+
+.select {
+  width: 200px;
+}
+
+.error {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
