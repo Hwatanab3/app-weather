@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const LocalClimaCard = () => {
+const LocalClimaCard = (setBgSelect) => {
     const [coords, setCoords] = useState()
     const [climaActual, setClimaActual] = useState()
     const [isCel, setIsCel] = useState(true)
@@ -22,16 +22,16 @@ const LocalClimaCard = () => {
         let errorMsg;
         switch (err.code) {
             case err.PERMISSION_DENIED:
-                errorMsg = 'No has dado permiso para obtener tu ubicación';
+                errorMsg = 'You have not give me permission 😥';
                 break;
             case err.POSITION_UNVAILABLE:
-                errorMsg = 'Tu ubicación no esta disponible';
+                errorMsg = 'Your position is not available';
                 break;
             case err.TIMEOUT:
-                errorMsg = 'Se termino el tiempo para obtener tu posición';
+                errorMsg = 'Time is up, can not know your position';
                 break;
             default:
-                errorMsg = 'Ha ocurrido un error al obtener tu posición'
+                errorMsg = 'ERROR'
         }
         setError(errorMsg)
     };

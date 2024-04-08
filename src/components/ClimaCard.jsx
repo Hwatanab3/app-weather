@@ -8,10 +8,14 @@ const ClimaCard = ({ clima, setBgSelect, errorClima }) => {
 
 
     useEffect(() => {
-        const cel = clima.main.temp
-        const fah = (cel * 9 / 5 + 32).toFixed(2);
-        setTemp({ cel, fah })
-        setBgSelect(clima?.weather[0].icon)
+        if (clima) {
+            const cel = clima?.main.temp
+            const fah = (cel * 9 / 5 + 32).toFixed(2);
+            setTemp({ cel, fah })
+            setBgSelect(clima?.weather[0].icon)
+        } else {
+            setBgSelect('01')
+        }
     }, [clima])
 
     const handleTemp = () => {

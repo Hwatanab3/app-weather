@@ -37,7 +37,7 @@ function App() {
               <h1 className='header__title'>⛅ Weather APP ⛅</h1>
             </header>
 
-            {clima ?
+            {errorClima || clima ?
               (
                 <div>
                   <ClimaCard
@@ -47,7 +47,9 @@ function App() {
                   />
                 </div>
               ) : (
-                <LocalClimaCard />
+                <LocalClimaCard
+                  setBgSelect={setBgSelect}
+                />
               )}
 
             <div className='app__search'>
@@ -59,6 +61,7 @@ function App() {
               <SelectCity
                 setClima={setClima}
                 setErrorClima={setErrorClima}
+                setBgSelect={setBgSelect}
               />
               <p className='search__txt'>If you can't find your city try to search</p>
             </div>

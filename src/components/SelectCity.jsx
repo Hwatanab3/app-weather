@@ -5,7 +5,7 @@ import { getCiudades } from '../services/getCiudades'
 import { getCiudadClima } from '../services/clima'
 import { getAuth } from '../services/getAuth'
 
-const SelectCity = ({ setClima, setErrorClima }) => {
+const SelectCity = ({ setClima, setErrorClima, }) => {
     const [paises, setPaises] = useState([])
     const [estados, setEstados] = useState([])
     const [ciudades, setCiudades] = useState([])
@@ -79,7 +79,7 @@ const SelectCity = ({ setClima, setErrorClima }) => {
 
             <div>
                 <select className='select' onChange={paisHandler}>
-                    <option value="">Elige un pais</option>
+                    <option value="">Select Country...</option>
                     {paises.map(pais => <option key={pais.country_short_name} value={pais.country_name}>{pais.country_name}</option>)}
                 </select>
 
@@ -88,7 +88,7 @@ const SelectCity = ({ setClima, setErrorClima }) => {
             {estados.length > 0 && (
                 <div>
                     <select className='select' onChange={estadoHandler}>
-                        <option value="">Elige un estado</option>
+                        <option value="">Select State...</option>
                         {estados.map(estado => <option key={estado.state_name} value={estado.state_name}>{estado.state_name}</option>)}
                     </select>
                 </div>)}
@@ -96,7 +96,7 @@ const SelectCity = ({ setClima, setErrorClima }) => {
             {ciudades.length > 0 && (
                 <div>
                     <select className='select' onChange={ciudadHandler}>
-                        <option value="">Elige una ciudad</option>
+                        <option value="">Select City...</option>
                         {ciudades.map((ciudad, index) => <option key={index} value={ciudad.city_name}>{ciudad.city_name}</option>)}
                     </select>
                 </div>)}
