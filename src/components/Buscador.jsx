@@ -15,7 +15,7 @@ const Buscador = ({ setClima, setErrorClima }) => {
         } catch (error) {
             console.error('not found it', error);
             if (error.response && error.response.status === 404) {
-                setErrorClima('I did not find the city try to search')
+                setErrorClima('I did not find the city 😨')
             } else {
                 setErrorClima('Error')
             }
