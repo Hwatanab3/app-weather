@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const ClimaCard = ({ clima, setBgSelect }) => {
+const ClimaCard = ({ clima, setBgSelect, errorClima }) => {
     const [isCel, setIsCel] = useState(true)
     const [temp, setTemp] = useState()
     const [name, setName] = useState('Change to °F')
@@ -21,46 +21,51 @@ const ClimaCard = ({ clima, setBgSelect }) => {
 
     return (
         <div>
-            <div className='clima__card'>
-                <div className='card__title'>
-                    <h2>{(clima?.name).toUpperCase()} {clima?.sys.country}</h2>
-                    <img
-                        src={`https://flagcdn.com/16x12/${clima?.sys.country.toLowerCase()}.png`}
-                        width="16"
-                        height="12"
-                        alt="bandera pais"></img>
-                </div>
-                <div className='card__content'>
-                    <figure>
-                        <img className='content__icon' src={`https://openweathermap.org/img/wn/${clima?.weather[0].icon}@2x.png`} alt='' />
-                    </figure>
-                    <div>
-                        <strong>"{(clima?.weather[0].description).toUpperCase()}"</strong>
-                        <ul>
-                            <li><span>Wind speed: </span><span>{clima?.wind.speed} m/s</span></li>
-                            <li><span>Clouds: </span><span>{clima?.clouds.all} %</span></li>
-                            <li><span>Pressure: </span><span>{clima?.main.pressure} hPa</span></li>
-                        </ul>
+            {
+                errorClima ? (
+                    <div className='error__container'>
+                        <p>{errorClima}</p>
+                        <img className='error' src='/assets/error_clima.gif' alt='error' />
                     </div>
-                </div>
-                <h2>
-                    {
-                        isCel ?
-                            temp?.cel + ' °C'
-                            :
-                            temp?.fah + ' °F'
-                    }
-                </h2>
-                <button className='btn--temp' onClick={handleTemp}>{name}</button>
-            </div>
+                ) : (
+                    <div className='clima__card'>
+                        <div className='card__title'>
+                            <h2>{(clima?.name).toUpperCase()} {clima?.sys.country}</h2>
+                            <img
+                                src={`https://flagcdn.com/16x12/${clima?.sys.country.toLowerCase()}.png`}
+                                width="16"
+                                height="12"
+                                alt="bandera pais"></img>
+                        </div>
+                        <div className='card__content'>
+                            <figure>
+                                <img className='content__icon' src={`https://openweathermap.org/img/wn/${clima?.weather[0].icon}@2x.png`} alt='' />
+                            </figure>
+                            <div>
+                                <strong>"{(clima?.weather[0].description).toUpperCase()}"</strong>
+                                <ul>
+                                    <li><span>Wind speed: </span><span>{clima?.wind.speed} m/s</span></li>
+                                    <li><span>Clouds: </span><span>{clima?.clouds.all} %</span></li>
+                                    <li><span>Pressure: </span><span>{clima?.main.pressure} hPa</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h2>
+                            {
+                                isCel ?
+                                    temp?.cel + ' °C'
+                                    :
+                                    temp?.fah + ' °F'
+                            }
+                        </h2>
+                        <button className='btn--temp' onClick={handleTemp}>{name}</button>
+                    </div>
+                )
+            }
+
+
         </div>
     )
 }
 
 export default ClimaCard
-
-// < h2 > { clima.name } | { clima.sys.country }</ >
-//           <h2>Actual temperature: {clima.main.temp} °C</h2>
-//           <p>Min: {clima.main.temp_min} °C</p>
-//           <p>Max: {clima.main.temp_max} °C</p>
-//           <img src={`https://openweathermap.org/img/wn/${clima.weather[0].icon}@2x.png`} alt='icono del clima' />

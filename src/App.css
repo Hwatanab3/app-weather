@@ -262,4 +262,8 @@ header {
   .error__container {
     max-width: 500px;
   }
+
+  .card__title {
+    font-size: 1.1rem;
+  }
 }

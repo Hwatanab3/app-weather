@@ -10,6 +10,8 @@ function App() {
   const [clima, setClima] = useState(null)
   const [bgSelect, setBgSelect] = useState('01')
   const [isLoading, setIsLoading] = useState(true)
+  const [errorClima, setErrorClima] = useState(null)
+
 
   const bgSytle = {
     backgroundImage: `url(./assets/background/bg${bgSelect}.jpeg)`
@@ -21,8 +23,6 @@ function App() {
     }, 4000);
     return () => clearTimeout(timer);
   }, [])
-
-  console.log(clima);
 
   return (
     <>
@@ -36,12 +36,14 @@ function App() {
             <header>
               <h1 className='header__title'>⛅ Weather APP ⛅</h1>
             </header>
+
             {clima ?
               (
                 <div>
                   <ClimaCard
                     clima={clima}
                     setBgSelect={setBgSelect}
+                    errorClima={errorClima}
                   />
                 </div>
               ) : (
@@ -52,9 +54,11 @@ function App() {
               <h2 className='search__title'>SEARCH COUNTRY</h2>
               <Buscador
                 setClima={setClima}
+                setErrorClima={setErrorClima}
               />
               <SelectCity
                 setClima={setClima}
+                setErrorClima={setErrorClima}
               />
               <p className='search__txt'>If you can't find your city try to search</p>
             </div>

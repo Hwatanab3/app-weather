@@ -5,7 +5,7 @@ import { getCiudades } from '../services/getCiudades'
 import { getCiudadClima } from '../services/clima'
 import { getAuth } from '../services/getAuth'
 
-const SelectCity = ({ setClima }) => {
+const SelectCity = ({ setClima, setErrorClima }) => {
     const [paises, setPaises] = useState([])
     const [estados, setEstados] = useState([])
     const [ciudades, setCiudades] = useState([])
@@ -40,7 +40,7 @@ const SelectCity = ({ setClima }) => {
                     setPaises(fetchedPaises)
                 }
             } catch (error) {
-                console.error('error 2', error);
+                console.error('error al obtener los paises', error);
             }
         };
         fetchPaises();
@@ -60,11 +60,23 @@ const SelectCity = ({ setClima }) => {
     };
 
     const ciudadHandler = async e => {
-        e.currentTarget.value && setClima(await getCiudadClima(e.currentTarget.value));
+        try {
+            e.currentTarget.value && setClima(await getCiudadClima(e.currentTarget.value));
+            setErrorClima(null);
+        } catch (error) {
+            console.error('not found it', error);
+            if (error.response && error.response.status === 404) {
+                setErrorClima('I did not find the city try to search')
+            } else {
+                setErrorClima('Error')
+            }
+        }
     };
+
 
     return (
         <div className='select__container'>
+
             <div>
                 <select className='select' onChange={paisHandler}>
                     <option value="">Elige un pais</option>
