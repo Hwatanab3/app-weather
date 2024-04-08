@@ -51,12 +51,14 @@ const SelectCity = ({ setClima, setErrorClima, }) => {
         e.currentTarget.value && setCiudades([]);
         e.currentTarget.value && setEstados(await getEstados(e.currentTarget.value, authData));
         setClima(null);
+        setErrorClima(null);
     };
 
     const estadoHandler = async e => {
         e.currentTarget.value && setCiudades([]);
         e.currentTarget.value && setCiudades(await getCiudades(e.currentTarget.value, authData));
         setClima(null);
+        setErrorClima(null);
     };
 
     const ciudadHandler = async e => {
@@ -66,7 +68,7 @@ const SelectCity = ({ setClima, setErrorClima, }) => {
         } catch (error) {
             console.error('not found it', error);
             if (error.response && error.response.status === 404) {
-                setErrorClima('I did not find the city try to search')
+                setErrorClima('I did not find the city 😨')
             } else {
                 setErrorClima('Error')
             }

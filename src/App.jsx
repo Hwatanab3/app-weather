@@ -69,6 +69,9 @@ function App() {
 
         )
       }
+      <a href="https://portafolio-hwatanabe.netlify.app/" target='blank'>
+        <img className='logo' src='../assets/logo_dark.png' alt='logo' />
+      </a>
     </>
   );
 }

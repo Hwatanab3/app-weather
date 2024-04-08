@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const LocalClimaCard = (setBgSelect) => {
+const LocalClimaCard = ({ setBgSelect }) => {
     const [coords, setCoords] = useState()
     const [climaActual, setClimaActual] = useState()
     const [isCel, setIsCel] = useState(true)
@@ -49,7 +49,7 @@ const LocalClimaCard = (setBgSelect) => {
                     const fah = (cel * 9 / 5 + 32).toFixed(2);
                     setTemp({ cel, fah })
                     setClimaActual(res.data)
-
+                    setBgSelect(res.data.weather[0].icon);
                 })
                 .catch(err => console.log(err))
         }
